@@ -61,10 +61,13 @@ void read_file(FILE *file)
 	while (fgets(instruction, sizeof(instruction), file) != NULL)
 	{
 		instruction[strcspn(instruction, "\n")] = '\0';
-
+		if (instruction[0] == '#')
+		{
+			line_number++;
+			continue;
+		}
 		opcode = strtok(instruction, " ");
-
-		if (opcode != NULL && opcode[0] != '#')
+		if (opcode != NULL)
 		{
 			for (i = 0; i < sizeof(instructions) / sizeof(instruction_t); i++)
 			{
@@ -74,7 +77,6 @@ void read_file(FILE *file)
 					break;
 				}
 			}
-
 			if (i == sizeof(instructions) / sizeof(instruction_t))
 			{
 				fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
