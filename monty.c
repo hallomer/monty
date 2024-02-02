@@ -55,7 +55,7 @@ void read_file(FILE *file)
 
 		opcode = strtok(instruction, " ");
 
-		if (opcode != NULL)
+		if (opcode != NULL && opcode[0] != '#')
 		{
 			for (i = 0; i < sizeof(instructions) / sizeof(instruction_t); i++)
 			{
