@@ -16,7 +16,7 @@ void push(stack_t **stack, unsigned int line_number)
 	argument = strtok(NULL, " ");
 	if (argument == NULL)
 	{
-		printf("L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -24,7 +24,7 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		if (!isdigit(argument[i]) && argument[i] != '-')
 		{
-			printf("L%u: usage: push integer\n", line_number);
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -32,7 +32,7 @@ void push(stack_t **stack, unsigned int line_number)
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -44,6 +44,8 @@ void push(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = new_node;
 
 	*stack = new_node;
+
+	free(new_node);
 }
 
 /**

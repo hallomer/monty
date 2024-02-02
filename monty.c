@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		printf("USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		return (EXIT_FAILURE);
 	}
 
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	file = fopen(filename, "r");
 	if (file == NULL)
 	{
-		printf("Error: Can't open file %s\n", filename);
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		return (EXIT_FAILURE);
 	}
 
@@ -68,7 +68,7 @@ void read_file(FILE *file)
 
 			if (i == sizeof(instructions) / sizeof(instruction_t))
 			{
-				printf("L%u: unknown instruction %s\n", line_number, opcode);
+				fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 				exit(EXIT_FAILURE);
 			}
 		}
