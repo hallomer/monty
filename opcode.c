@@ -14,13 +14,13 @@ void push(stack_t **stack, unsigned int line_number)
 	int i;
 
 	argument = strtok(NULL, " ");
-	if (argument == NULL)
+	if (argument == NULL || (!isdigit(argument[0]) && argument[0] != '-'))
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	for (i = 0; argument[i] != '\0'; i++)
+	for (i = 1; argument[i] != '\0'; i++)
 	{
 		if (!isdigit(argument[i]) && argument[i] != '-')
 		{
@@ -44,8 +44,6 @@ void push(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = new_node;
 
 	*stack = new_node;
-
-	free(new_node);
 }
 
 /**

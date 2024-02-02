@@ -69,7 +69,6 @@ void read_file(FILE *file)
 			if (i == sizeof(instructions) / sizeof(instruction_t))
 			{
 				fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
-				exit(EXIT_FAILURE);
 			}
 		}
 
