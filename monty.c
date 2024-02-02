@@ -3,6 +3,11 @@
 instruction_t instructions[] = {
 	{"push", push},
 	{"pall", pall},
+	{"pall", pint},
+	{"pop", pop},
+	{"swap", swap},
+	{"add", add},
+	{"nop", nop},
 };
 
 /**
