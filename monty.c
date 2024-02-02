@@ -12,12 +12,15 @@ instruction_t instructions[] = {
 	{"div", divide},
 	{"mul", mul},
 	{"mod", mod},
+	{"pchar", pchar},
+	{"pstr", pstr},
 };
 
 /**
  * main - Entry point of Monty interpreter
  * @argc: arguments count
  * @argv: array of arguments
+ *
  * Return: EXIT_SUCCESS or EXIT_FAILURE
 */
 int main(int argc, char *argv[])
